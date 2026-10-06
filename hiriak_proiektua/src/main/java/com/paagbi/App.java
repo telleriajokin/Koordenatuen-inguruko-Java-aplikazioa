@@ -1,11 +1,12 @@
 package com.paagbi;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
 
@@ -73,9 +74,17 @@ public class App {
         }
     }
 
-    private static void erakutsiHiriak() {
+    private static void erakutsiHiriak() throws IOException {
 
-        System.out.println("Oraindik ez dago implementatuta.");
+        List<Hiria> hiriak = CSVKudeatzailea.irakurriGuztiak();
+
+        if (hiriak.isEmpty()) {
+            System.out.println("Ez dago daturik.");
+        } else {
+            for (Hiria h : hiriak) {
+                System.out.println(h.getIzena() + " (" + h.getLatitudea() + ", " + h.getLongitudea() + ")");
+            }
+        }
     }
 
     private static void jolastu(Scanner sc) {

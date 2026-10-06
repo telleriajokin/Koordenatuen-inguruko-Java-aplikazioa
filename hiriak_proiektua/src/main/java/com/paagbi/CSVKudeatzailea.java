@@ -1,10 +1,14 @@
 package com.paagbi;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CSVKudeatzailea {
 
@@ -18,9 +22,9 @@ public class CSVKudeatzailea {
 
             Files.write(
                     path,
-                    "Hiria,Latitudea,Longitudea\n".getBytes(),
-                    StandardOpenOption.CREATE
-            );
+                    "Hiria;Latitudea;Longitudea\r\n".getBytes(StandardCharsets.UTF_8), // irakurtzeko karaktere
+                                                                                       // ez-ohikoak
+                    StandardOpenOption.CREATE);
         }
     }
 
@@ -28,15 +32,50 @@ public class CSVKudeatzailea {
 
         Path path = Paths.get(FITXATEGIA);
 
-        String lerroa =
-                hiria.getIzena() + "," +
+        String lerroa = hiria.getIzena() + "," +
                 hiria.getLatitudea() + "," +
-                hiria.getLongitudea() + "\n";
+                hiria.getLongitudea() + "\r\n";
 
         Files.write(
                 path,
-                lerroa.getBytes(),
-                StandardOpenOption.APPEND
-        );
+                lerroa.getBytes(StandardCharsets.UTF_8), // irakurtzeko karaktere ez-ohikoak
+                StandardOpenOption.APPEND);
     }
+
+    public static List<Hiria> irakurriGuztiak() throws IOException {
+        List<Hiria> hiriak = new ArrayList<>();
+        Path path = Paths.get(FITXATEGIA);
+
+        if (!Files.exists(path)) {
+            return hiriak;
+        }
+
+        try (BufferedReader br = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+            br.readLine(); // goiburua (cabecera) baztertu
+
+            String lerroa;
+            while ((lerroa = br.readLine()) != null) {
+                if (lerroa.trim().isEmpty()) {
+                    continue; // lerro hutsa
+                }
+
+                String[] zatiak = lerroa.split(";");
+                if (zatiak.length != 3) {
+                    System.out.println("Lerro okerra, saltatzen: " + lerroa);
+                    continue;
+                }
+
+                try {
+                    String izena = zatiak[0].trim();
+                    double latitudea = Double.parseDouble(zatiak[1].trim());
+                    double longitudea = Double.parseDouble(zatiak[2].trim());
+                    hiriak.add(new Hiria(izena, latitudea, longitudea));
+                } catch (NumberFormatException e) {
+                    System.out.println("Zenbaki okerra, saltatzen: " + lerroa);
+                }
+            }
+        }
+        return hiriak;
+    }
+
 }
