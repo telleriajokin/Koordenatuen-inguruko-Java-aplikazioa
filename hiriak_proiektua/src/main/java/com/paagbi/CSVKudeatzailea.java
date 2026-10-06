@@ -32,8 +32,8 @@ public class CSVKudeatzailea {
 
         Path path = Paths.get(FITXATEGIA);
 
-        String lerroa = hiria.getIzena() + "," +
-                hiria.getLatitudea() + "," +
+        String lerroa = hiria.getIzena() + ";" +
+                hiria.getLatitudea() + ";" +
                 hiria.getLongitudea() + "\r\n";
 
         Files.write(
@@ -67,8 +67,8 @@ public class CSVKudeatzailea {
 
                 try {
                     String izena = zatiak[0].trim();
-                    double latitudea = Double.parseDouble(zatiak[1].trim());
-                    double longitudea = Double.parseDouble(zatiak[2].trim());
+                    String latitudea = zatiak[1].trim();
+                    String longitudea = zatiak[2].trim();
                     hiriak.add(new Hiria(izena, latitudea, longitudea));
                 } catch (NumberFormatException e) {
                     System.out.println("Zenbaki okerra, saltatzen: " + lerroa);
@@ -77,5 +77,4 @@ public class CSVKudeatzailea {
         }
         return hiriak;
     }
-
 }
