@@ -1,3 +1,4 @@
+package com.paagbi;
 public class Hiria {
 
     private String izena;
