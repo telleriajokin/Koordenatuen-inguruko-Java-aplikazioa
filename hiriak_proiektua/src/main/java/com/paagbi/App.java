@@ -89,6 +89,42 @@ public class App {
 
     private static void jolastu(Scanner sc) {
 
-        System.out.println("Oraindik ez dago implementatuta.");
+    try {
+
+        List<Hiria> hiriak = CSVKudeatzailea.irakurriGuztiak();
+
+        if (hiriak.isEmpty()) {
+            System.out.println("Ez dago hiriarik gordeta.");
+            return;
+        }
+
+        int puntuazioa = 0;
+
+        for (int i = 0; i < 5; i++) {
+
+            int ausazkoPos = (int) (Math.random() * hiriak.size());
+            Hiria hiria = hiriak.get(ausazkoPos);
+
+            System.out.println("\nGaldera " + (i + 1));
+            System.out.println("Latitudea: " + hiria.getLatitudea());
+            System.out.println("Longitudea: " + hiria.getLongitudea());
+
+            System.out.print("Zein hiria da? ");
+            String erantzuna = sc.nextLine();
+
+            if (erantzuna.equalsIgnoreCase(hiria.getIzena())) {
+                System.out.println("Zuzena!");
+                puntuazioa++;
+            } else {
+                System.out.println("Okerra! Erantzun zuzena: " + hiria.getIzena());
+            }
+        }
+
+        System.out.println("\nAmaiera!");
+        System.out.println("Puntuazioa: " + puntuazioa + "/5");
+
+    } catch (IOException e) {
+        System.out.println("Errorea fitxategia irakurtzean.");
     }
+
 }
