@@ -51,7 +51,7 @@ public class CSVKudeatzailea {
         }
 
         try (BufferedReader br = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
-            br.readLine(); // goiburua (cabecera) baztertu
+            br.readLine(); // goiburua baztertu
 
             String lerroa;
             while ((lerroa = br.readLine()) != null) {
