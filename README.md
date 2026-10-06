@@ -4,9 +4,9 @@
 
 Proiektu honen helburua erabiltzailea leku desberdinen koordenatu geografikoekin trebatzea da.
 
-Programak hiriak eta haien koordenatuak CSV fitxategi batean gordetzeko aukera ematen du. Ondoren, erabiltzaileak joko moduan praktikatu ahal izango du, koordenatu batzuk ikusita dagokion hiria asmatu behar duelarik.
+Programak hiriak eta haien koordenatuak CSV fitxategi batean gordetzeko aukera ematen du. Ondoren, erabiltzaileak joko batean saiatu beharko da azmatzen zein hiriaren koordenatuak dira erakusten direnak.
 
-Proiektua Java erabiliz garatuko da.
+Proiektua Java Maven erabiliz garatu da.
 
 ---
 
@@ -14,7 +14,7 @@ Proiektua Java erabiliz garatuko da.
 
 ### 1. Hiri berria gehitu
 
-Erabiltzaileak datu hauek sartuko ditu:
+Erabiltzaileak datu hauek sartu beharko ditu:
 
 - Hiriaren izena
 - Latitudea
@@ -35,15 +35,15 @@ Hiria ondo gorde da.
 Programak CSV fitxategian gordetako hiri guztiak erakutsiko ditu.
 
 ```text
-Bilbao -> (43.2630, -2.9350)
-Donostia -> (43.3183, -1.9812)
-Gasteiz -> (42.8467, -2.6716)
-Iruña -> (42.8125, -1.6458)
+Bilbao (43.2630, -2.9350)
+Donostia (43.3183, -1.9812)
+Gasteiz (42.8467, -2.6716)
+Iruña (42.8125, -1.6458)
 ```
 
 ### 3. Jolastu
 
-Programak CSV fitxategitik ausaz hiri bat aukeratuko du eta haren koordenatuak erakutsiko ditu. Erabiltzaileak koordenatu horiei dagokien hiria asmatu beharko du.
+Programak CSV fitxategitik ausaz hiri bat aukeratuko du eta haren koordenatuak erakutsiko ditu. Erabiltzaileak zein hiriarenak diren asmatu beharko ditu.
 
 ```text
 Koordenatuak: 43.3183, -1.9812
@@ -89,21 +89,21 @@ Aukeratu aukera bat:
 Hirien datuak `hiriak.csv` fitxategian gordeko dira.
 
 ```csv
-Hiria,Latitudea,Longitudea
-Bilbao,43.2630,-2.9350
-Donostia,43.3183,-1.9812
-Gasteiz,42.8467,-2.6716
-Iruña,42.8125,-1.6458
+Hiria;Latitudea;Longitudea
+Bilbao;43.2630;-2.9350
+Donostia;43.3183;-1.9812
+Gasteiz;42.8467;-2.6716
+Iruna;42.8125;-1.6458
 ```
 
-CSV fitxategiko lerro bakoitzak hiri baten izena, latitudea eta longitudea gordeko ditu. Datuak koma bidez banatuko dira.
+CSV fitxategiko lerro bakoitzak hiri baten izena, latitudea eta longitudea gordeko ditu. Datuak puntu-koma bidez banatuko dira.
 
 ---
 
 ## Proiektuaren egitura
 
 ```text
-KoordenatuenJokoa/
+hiriak_proiektua/
 ├── src/
 │   ├── Main.java
 │   ├── Hiria.java
@@ -122,8 +122,8 @@ Hiri bakoitzaren datuak gordetzeko erabiliko den klasea izango da.
 
 ```java
 private String izena;
-private double latitudea;
-private double longitudea;
+private String latitudea;
+private String longitudea;
 ```
 
 ### CSVKudeatzailea.java
@@ -146,17 +146,17 @@ Path
 Paths
 Files
 BufferedReader
-BufferedWriter
+StandardCharsets
 StandardOpenOption
+IOException
 ```
 
 Beste funtzionalitateetarako:
 
 ```java
-Scanner
-Random
 ArrayList
 List
+Scanner
 ```
 
 ---
@@ -167,18 +167,15 @@ Programak egoera hauek kontrolatuko ditu:
 
 - CSV fitxategia existitzen ez bada, automatikoki sortzea
 - Hiriaren izena hutsik ez egotea
-- Latitudea eta longitudea zenbakiak izatea
 - Jolasten hasi aurretik CSV fitxategian hiriak egotea
-- Menuko aukera zuzena aukeratzea
-- Hiri bera behin baino gehiagotan ez gordetzea
 
 ---
 
 ## Etorkizuneko hobekuntzak
 
-- Puntuazio sistema gehitzea
+- Menuko aukera zuzena aukeratzea
+- Hiri bera behin baino gehiagotan ez gordetzea
 - Galdera kopurua aukeratzea
-- Asmatutako eta huts egindako galderen kopurua erakustea
 - Hiriak ezabatzea edo aldatzea
 - Zailtasun mailak gehitzea
 - Emaitzak beste CSV fitxategi batean gordetzea
@@ -188,4 +185,4 @@ Programak egoera hauek kontrolatuko ditu:
 
 ## Ondorioa
 
-Proiektu honen bidez Java-ko klaseak, objektuak, menuak, begiztak, zerrendak, salbuespenen kudeaketa eta CSV fitxategien irakurketa eta idazketa landuko dira.
+Proiektu honen bidez Java-ko klaseak, objektuak, menuak, begiztak, zerrendak, salbuespenen kudeaketa eta CSV fitxategien irakurketa eta idazketa landu dira.
