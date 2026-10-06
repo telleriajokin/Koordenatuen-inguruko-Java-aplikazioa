@@ -60,22 +60,7 @@ public class App {
     private static void gehituHiria(Scanner sc) {
 
         try {
-
-            System.out.print("Hiriaren izena: ");
-            String izena = sc.nextLine();
-
-            System.out.print("Latitudea: ");
-            double latitudea = sc.nextDouble();
-
-            System.out.print("Longitudea: ");
-            double longitudea = sc.nextDouble();
-            sc.nextLine();
-
-            Hiria hiria = new Hiria(
-                    izena,
-                    latitudea,
-                    longitudea
-            );
+            Hiria hiria = new Hiria(sc);
 
             CSVKudeatzailea.gehituHiria(hiria);
 

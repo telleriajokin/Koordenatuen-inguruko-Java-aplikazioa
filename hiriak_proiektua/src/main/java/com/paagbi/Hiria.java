@@ -1,5 +1,7 @@
 package com.paagbi;
 
+import java.util.Scanner;
+
 public class Hiria {
 
     private String izena;
@@ -10,6 +12,27 @@ public class Hiria {
         this.izena = izena;
         this.latitudea = latitudea;
         this.longitudea = longitudea;
+    }
+
+    public Hiria(Scanner scan) {
+        setIzena(scan);
+        setLatitudea(scan);
+        setLongitudea(scan);
+    }
+
+    public void setIzena(Scanner scan) {
+        System.out.println("Hiriaren izena: ");
+        izena = scan.nextLine();
+    }
+
+    public void setLatitudea(Scanner scan) {
+        System.out.println("Hiriaren latitudea: ");
+        latitudea = scan.nextInt();
+    }
+
+    public void setLongitudea(Scanner scan) {
+        System.out.println("Hiriaren longitudea: ");
+        longitudea = scan.nextInt();
     }
 
     public String getIzena() {
