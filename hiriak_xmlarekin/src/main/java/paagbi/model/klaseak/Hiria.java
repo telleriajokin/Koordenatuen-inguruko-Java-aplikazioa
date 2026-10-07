@@ -23,7 +23,9 @@ public class Hiria {
     }
 
     public Hiria (Scanner scan) {
-        
+        System.out.print("Hiriaren izena: ");
+        izena = scan.nextLine();
+        //falta koordenatuak jasotzea
     }
 
     public String getIzena() {
