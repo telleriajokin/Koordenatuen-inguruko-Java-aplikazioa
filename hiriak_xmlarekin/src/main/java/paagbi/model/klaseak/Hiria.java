@@ -44,17 +44,3 @@ public class Hiria {
         this.koordenatuak = koordenatuak;
     }
 }
-
-/*Así el flujo queda en cascada: new Hiria(scan) pregunta el nombre, 
-llama a new Koordenatuak(scan), que pregunta latitud y longitud, y 
-el objeto resultante se guarda en el campo. Y como se reutiliza el 
-mismo Scanner, no hay problemas con el buffer de entrada. Esto escala 
-igual si más adelante Koordenatuak tuviera otra clase dentro.
-
-Un detalle para JAXB: con XmlAccessType.FIELD, los nombres de los 
-elementos XML salen de los nombres de los campos. En tu estructura 
-aparece koordenatua y altitudea, pero en el código los campos son 
-koordenatuak y latitudea. Si el XML real usa los nombres de la estructura, 
-tendrás que indicarlo con @XmlElement(name = "...") en esos campos, o decidir 
-cuál de los dos nombres es el correcto. Si quieres, dime cuál es el XML de 
-referencia y lo miramos. */
