@@ -1,5 +1,7 @@
 package paagbi.model.klaseak;
 
+import java.util.Scanner;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -18,6 +20,10 @@ public class Hiria {
 
         this.izena = izena;
         this.koordenatuak = koordenatuak;
+    }
+
+    public Hiria (Scanner scan) {
+        
     }
 
     public String getIzena() {

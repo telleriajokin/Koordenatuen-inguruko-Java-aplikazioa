@@ -1,4 +1,4 @@
-package model.paagbi.model.klaseak;
+package paagbi.model.klaseak;
 
 import jakarta.xml.bind.annotation.*;
 

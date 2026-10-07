@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-import paagbi.model.Hiria;
-import paagbi.model.Hiria.HiriDatuak;
+import paagbi.model.klaseak.Hiria;
 
 public class App {
 
@@ -57,7 +56,7 @@ public class App {
     private static void gehituHiria(Scanner sc) {
 
         try {
-            HiriDatuak hiria = new HiriDatuak(sc);
+            Hiria hiria = new Hiria(sc);
 
             /*Unmarshal metodoa deitu behar*/
 
