@@ -12,12 +12,12 @@ import java.util.List;
 
 public class CSVKudeatzailea {
 
-    private static final String FITXATEGIA = "hiriak.csv";
+    private static final Path FITXATEGIA =
+        Paths.get("hiriak_proiektua", "hiriak.csv");
 
     public static void sortuCSV() throws IOException {
 
-        Path path = Paths.get(FITXATEGIA);
-
+        Path path = FITXATEGIA;
         if (!Files.exists(path)) {
 
             Files.write(
@@ -30,7 +30,7 @@ public class CSVKudeatzailea {
 
     public static void gehituHiria(Hiria hiria) throws IOException {
 
-        Path path = Paths.get(FITXATEGIA);
+        Path path = FITXATEGIA;
 
         String lerroa = hiria.getIzena() + ";" +
                 hiria.getLatitudea() + ";" +
@@ -44,7 +44,7 @@ public class CSVKudeatzailea {
 
     public static List<Hiria> irakurriGuztiak() throws IOException {
         List<Hiria> hiriak = new ArrayList<>();
-        Path path = Paths.get(FITXATEGIA);
+        Path path = FITXATEGIA;
 
         if (!Files.exists(path)) {
             return hiriak;
