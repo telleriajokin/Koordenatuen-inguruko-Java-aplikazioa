@@ -7,6 +7,7 @@ public class Herria {
     private Double latitudea;
     private Double longitudea;
 
+    //Eraikitzaileak
     public Herria(String izena, Double latitudea, Double longitudea) {
         this.izena = izena;
         this.latitudea = latitudea;
@@ -19,6 +20,7 @@ public class Herria {
         setLongitudea(scan);
     }
 
+    //Izena SET/GET
     public void setIzena(Scanner scan) {
         System.out.print("Hiriaren izena: ");
         izena = scan.nextLine();
@@ -28,6 +30,7 @@ public class Herria {
         return izena;
     }
 
+    // Latitudea SET/GET
     public void setLatitudea(Scanner scan) {
         System.out.print("Hiriaren latitudea: ");
         latitudea = Double.parseDouble(scan.nextLine().trim().replace(',', '.')); // seguruagoa da nextLine eta
@@ -39,6 +42,7 @@ public class Herria {
         return latitudea;
     }
 
+    //Longitudea SET/GET
     public void setLongitudea(Scanner scan) {
         System.out.print("Hiriaren longitudea: ");
         longitudea = Double.parseDouble(scan.nextLine().trim().replace(',', '.'));// replace aldatzen ditu komak
@@ -49,6 +53,7 @@ public class Herria {
         return longitudea;
     }
 
+    //hau beharrezkoa da datuak eraskuterako orduan "formateaututa" ikusteko, politago egoteko
     @Override
     public String toString() {
         return izena + " (" + latitudea + ", " + longitudea + ")";

@@ -6,12 +6,15 @@ import java.util.Scanner;
 import paagbi.data.jsonFitxategienKudeatzailea;
 import paagbi.models.Herria;
 
+//klase honetan menua eta bere erabakiak kudeatzen dira
 public class Menu {
+    //insitatzen dira scannerra eta json fitxategiak kudeatzen dituen klasea
     private final Scanner sc = new Scanner(System.in);
     private final jsonFitxategienKudeatzailea kudeatzailea = new jsonFitxategienKudeatzailea();
 
     public void hasi() {
         int aukera;
+        //erabiltzaileak aplikazioa itxi nahi ez duen bitartean ejekutatuko da
         do {
             System.out.println("\n--- MENUA ---");
             System.out.println("1. Datuak sartu");
@@ -26,10 +29,11 @@ public class Menu {
                 aukera = -1;
             }
 
+            //aukereen arabera metodoak deitu
             switch (aukera) {
-                case 1 -> herriaSartu();
+                case 1 -> herriaSartu(); 
                 case 2 -> datuakErakutsi();
-                case 3 -> new Jolasa(kudeatzailea.Kargatu(), sc).jolastu();
+                case 3 -> new Jolasa(kudeatzailea.Kargatu(), sc).jolastu(); //direktamente jolasa klasea deitu
                 case 0 -> System.out.println("Agur!");
                 default -> System.out.println("Aukera okerra.");
             }
@@ -38,6 +42,7 @@ public class Menu {
 
     private void herriaSartu() {
     try {
+        //json fitxategiak kudeatzen dituen klasera deitu herri bat gordetzeko, herri hori bere klasean sortu da
         kudeatzailea.gehitu(new Herria(sc));
         System.out.println("Gordeta!");
     } catch (NumberFormatException e) {
@@ -46,6 +51,7 @@ public class Menu {
 }
 
     private void datuakErakutsi() {
+        //json fitxategiak kudeatzen dituen klasera deitu herri danak erakusteko
         List<Herria> lista = kudeatzailea.Kargatu();
         if (lista.isEmpty()) {
             System.out.println("Ez dago daturik.");
